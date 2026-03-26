@@ -176,6 +176,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 firstNumber / secondNumber
             }
+            "%" -> (firstNumber * secondNumber) / 100
             else -> return
         }
 
