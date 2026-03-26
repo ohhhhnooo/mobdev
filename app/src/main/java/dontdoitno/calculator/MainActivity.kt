@@ -115,7 +115,7 @@ class MainActivity : AppCompatActivity() {
     private fun onNumberClick(number: String) {
         currentInput += number
         expression += number
-        mathOperationText.text = expression
+        resultText.text = expression
     }
 
     private fun onOperatorClick(op: String) {
@@ -125,7 +125,7 @@ class MainActivity : AppCompatActivity() {
         operator = op
 
         expression += " $op "
-        mathOperationText.text = expression
+        resultText.text = expression
 
         currentInput = ""
     }
@@ -134,7 +134,7 @@ class MainActivity : AppCompatActivity() {
         if (!currentInput.contains(".")) {
             currentInput = if (currentInput.isEmpty()) "0." else "$currentInput."
             expression += "."
-            mathOperationText.text = expression
+            resultText.text = expression
         }
     }
 
@@ -145,7 +145,7 @@ class MainActivity : AppCompatActivity() {
 
         if (expression.isNotEmpty()) {
             expression = expression.dropLast(1)
-            mathOperationText.text = expression
+            resultText.text = expression
         }
     }
 
