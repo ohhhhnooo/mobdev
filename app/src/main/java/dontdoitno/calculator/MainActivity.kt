@@ -114,7 +114,8 @@ class MainActivity : AppCompatActivity() {
     // Логика
     private fun onNumberClick(number: String) {
         currentInput += number
-        updateDisplay()
+        expression += number
+        mathOperationText.text = expression
     }
 
     private fun onOperatorClick(op: String) {
@@ -123,7 +124,7 @@ class MainActivity : AppCompatActivity() {
         firstNumber = currentInput.toDoubleOrNull() ?: return
         operator = op
 
-        expression = "$currentInput $op"
+        expression += " $op "
         mathOperationText.text = expression
 
         currentInput = ""
@@ -132,14 +133,19 @@ class MainActivity : AppCompatActivity() {
     private fun onDotClick() {
         if (!currentInput.contains(".")) {
             currentInput = if (currentInput.isEmpty()) "0." else "$currentInput."
-            updateDisplay()
+            expression += "."
+            mathOperationText.text = expression
         }
     }
 
     private fun onDelSymbolClick() {
         if (currentInput.isNotEmpty()) {
             currentInput = currentInput.dropLast(1)
-            updateDisplay()
+        }
+
+        if (expression.isNotEmpty()) {
+            expression = expression.dropLast(1)
+            mathOperationText.text = expression
         }
     }
 
@@ -148,7 +154,9 @@ class MainActivity : AppCompatActivity() {
         firstNumber = 0.0
         operator = null
         expression = ""
-        updateDisplay()
+
+        mathOperationText.text = ""
+        resultText.text = ""
     }
 
     @SuppressLint("SetTextI18n")
