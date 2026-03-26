@@ -159,6 +159,11 @@ class MainActivity : AppCompatActivity() {
         resultText.text = ""
     }
 
+    private fun checkFormat(number: Double?): String {
+        return if (number?.rem(1.0) == 0.0) number.toInt().toString()
+        else number.toString()
+    }
+
     @SuppressLint("SetTextI18n")
     private fun onEqualsClick() {
         if (currentInput.isEmpty() || operator == null) return
@@ -181,9 +186,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         // показываем полное выражение
-        mathOperationText.text = "$firstNumber $operator $secondNumber"
 
-        currentInput = result.toString()
+        mathOperationText.text = "${checkFormat(firstNumber)} $operator ${checkFormat(secondNumber)}"
+
+        resultText.text = checkFormat(result)
+
+        currentInput = checkFormat(result)
         operator = null
         expression = ""
 
