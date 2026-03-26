@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:id="@+id/main"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -9,7 +10,7 @@
 
     <!-- Математическая операция -->
     <TextView
-        android:id="@+id/math_operation"
+        android:id="@+id/mathOperation"
         android:layout_width="match_parent"
         android:layout_height="120sp"
         android:textColor="#95989c"
@@ -40,50 +41,50 @@
         <!--    1 ряд    -->
         <Button
             style="@style/calcButtonLight"
-            android:id="@+id/btn_clear"
+            android:id="@+id/btnClear"
             android:text="C">
         </Button>
 
         <Button
             style="@style/calcButtonLight"
-            android:id="@+id/btn_change_sign"
-            android:text="±">
+            android:id="@+id/btnDelSymbol"
+            android:text="&lt;—">
         </Button>
 
         <Button
             style="@style/calcButtonLight"
-            android:id="@+id/btn_percent"
+            android:id="@+id/btnPercent"
             android:text="%">
         </Button>
 
         <Button
             style="@style/calcButtonLight"
-            android:id="@+id/btn_divide"
+            android:id="@+id/btnDivide"
             android:text="÷">
         </Button>
 
         <!--    2 ряд    -->
         <Button
             style="@style/calcButtonBlack"
-            android:id="@+id/btn_7"
+            android:id="@+id/btn7"
             android:text="7">
         </Button>
 
         <Button
             style="@style/calcButtonBlack"
-            android:id="@+id/btn_8"
+            android:id="@+id/btn8"
             android:text="8">
         </Button>
 
         <Button
             style="@style/calcButtonBlack"
-            android:id="@+id/btn_9"
+            android:id="@+id/btn9"
             android:text="9">
         </Button>
 
         <Button
             style="@style/calcButtonLight"
-            android:id="@+id/btn_multiply"
+            android:id="@+id/btnMultiply"
             android:text="×">
         </Button>
 
@@ -91,25 +92,25 @@
 
         <Button
             style="@style/calcButtonBlack"
-            android:id="@+id/btn_4"
+            android:id="@+id/btn4"
             android:text="4">
         </Button>
 
         <Button
             style="@style/calcButtonBlack"
-            android:id="@+id/btn_5"
+            android:id="@+id/btn5"
             android:text="5">
         </Button>
 
         <Button
             style="@style/calcButtonBlack"
-            android:id="@+id/btn_6"
+            android:id="@+id/btn6"
             android:text="6">
         </Button>
 
         <Button
             style="@style/calcButtonLight"
-            android:id="@+id/btn_minus"
+            android:id="@+id/btnMinus"
             android:text="—">
         </Button>
 
@@ -117,25 +118,25 @@
 
         <Button
             style="@style/calcButtonBlack"
-            android:id="@+id/btn_1"
+            android:id="@+id/btn1"
             android:text="1">
         </Button>
 
         <Button
             style="@style/calcButtonBlack"
-            android:id="@+id/btn_2"
+            android:id="@+id/btn2"
             android:text="2">
         </Button>
 
         <Button
             style="@style/calcButtonBlack"
-            android:id="@+id/btn_3"
+            android:id="@+id/btn3"
             android:text="3">
         </Button>
 
         <Button
             style="@style/calcButtonLight"
-            android:id="@+id/btn_plus"
+            android:id="@+id/btnPlus"
             android:text="+">
         </Button>
 
@@ -143,24 +144,23 @@
 
         <Button
             style="@style/calcButtonBlack"
-            android:id="@+id/btn_0"
+            android:id="@+id/btn0"
             android:text="0">
         </Button>
 
         <Button
             style="@style/calcButtonLight"
-            android:id="@+id/btn_dot"
+            android:id="@+id/btnDot"
             android:text=".">
         </Button>
 
         <Button
             style="@style/calcButtonLight"
-            android:id="@+id/btn_equal"
+            android:id="@+id/btnEquals"
             android:text="="
             android:layout_columnSpan="2">
         </Button>
 
     </GridLayout>
-
 
 </LinearLayout>
