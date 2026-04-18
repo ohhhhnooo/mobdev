@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.ListView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -71,8 +72,21 @@ class MainActivity : AppCompatActivity() {
     // Загружает контакты из базы данных и показывает список
     private fun showContacts() {
         loadContacts()
-        bindList()
-        findViewById<ListView>(R.id.lvContacts).visibility = View.VISIBLE
+        if (contactNames.isEmpty()) {
+            findViewById<TextView>(R.id.txtNoContacts).visibility = View.VISIBLE
+        } else {
+            bindList()
+            findViewById<ListView>(R.id.lvContacts).setOnItemClickListener {
+                _, _, position, _ ->
+                val name = contactNames[position]
+                val number = contactNumbers[position]
+                android.app.AlertDialog.Builder(this)
+                    .setTitle(name)
+                    .setMessage(number)
+                    .setPositiveButton(R.string.dialog_ok) { dialog, _ -> dialog.dismiss() }
+                    .show()
+            }
+        }
         findViewById<LinearLayout>(R.id.layoutNoPermission).visibility = View.GONE
     }
 

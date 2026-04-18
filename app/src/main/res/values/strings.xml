@@ -3,4 +3,6 @@
     <string name="no_permission_message">Contact permission is not granted</string>
     <string name="btn_grant_permission">Grant permission</string>
     <string name="contacts_label">Contacts</string>
+    <string name="no_contacts">No contacts are found</string>
+    <string name="dialog_ok">OK</string>
 </resources>
