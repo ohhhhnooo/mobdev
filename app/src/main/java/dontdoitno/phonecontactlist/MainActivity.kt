@@ -9,10 +9,11 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.ListView
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,8 +33,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) {
+            view, insets ->
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(bars.left, bars.top, bars.right, bars.bottom)
+            insets
+        }
 
         // Восстанавливаем списки после поворота экрана, чтобы не перезагружать контакты
         savedInstanceState?.let {
@@ -76,7 +83,9 @@ class MainActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.txtNoContacts).visibility = View.VISIBLE
         } else {
             bindList()
-            findViewById<ListView>(R.id.lvContacts).setOnItemClickListener {
+            val lv = findViewById<ListView>(R.id.lvContacts)
+            lv.visibility = View.VISIBLE
+            lv.setOnItemClickListener {
                 _, _, position, _ ->
                 val name = contactNames[position]
                 val number = contactNumbers[position]
