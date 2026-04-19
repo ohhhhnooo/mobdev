@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
             contactNames.addAll(it.getStringArrayList("names") ?: emptyList())
             contactNumbers.addAll(it.getStringArrayList("numbers") ?: emptyList())
             bindList()
+            setupClickListener()
         }
 
         // Кнопка для повторного запроса разрешения, если оно было отклонено
@@ -83,21 +84,11 @@ class MainActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.txtNoContacts).visibility = View.VISIBLE
         } else {
             bindList()
-            val lv = findViewById<ListView>(R.id.lvContacts)
-            lv.visibility = View.VISIBLE
-            lv.setOnItemClickListener {
-                _, _, position, _ ->
-                val name = contactNames[position]
-                val number = contactNumbers[position]
-                android.app.AlertDialog.Builder(this)
-                    .setTitle(name)
-                    .setMessage(number)
-                    .setPositiveButton(R.string.dialog_ok) { dialog, _ -> dialog.dismiss() }
-                    .show()
+            findViewById<ListView>(R.id.lvContacts).visibility = View.VISIBLE
+            setupClickListener()
             }
-        }
         findViewById<LinearLayout>(R.id.layoutNoPermission).visibility = View.GONE
-    }
+        }
 
     // Скрывает список и показывает сообщение об отсутствии разрешения
     private fun showNoPermission() {
@@ -136,5 +127,16 @@ class MainActivity : AppCompatActivity() {
             contactNames
         )
         findViewById<ListView>(R.id.lvContacts).adapter = adapter
+    }
+
+    // Устанавливает обработчик нажатия на элемент списка: показывает диалог с именем и номером
+    private fun setupClickListener() {
+        findViewById<ListView>(R.id.lvContacts).setOnItemClickListener {
+            _, _, position, _ ->
+            val name = contactNames[position]
+            val number = contactNumbers[position]
+            ContactDialogFragment.newInstance(name, number)
+                .show(supportFragmentManager, "contact_dialog")
+        }
     }
 }
