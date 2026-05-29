@@ -24,4 +24,6 @@
     <string name="content_description_chat_image">Chat image</string>
     <string name="content_description_full_image">Full screen image</string>
     <string name="content_description_close">Close</string>
+    <string name="offline_banner">Нет подключения — показаны кешированные данные</string>
+    <string name="error_offline_queued">Нет сети: сообщение будет отправлено при подключении</string>
 </resources>

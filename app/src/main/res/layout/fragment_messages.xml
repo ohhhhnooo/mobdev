@@ -5,6 +5,18 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tv_offline_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_orange_dark"
+        android:gravity="center"
+        android:padding="6dp"
+        android:text="@string/offline_banner"
+        android:textColor="@android:color/white"
+        android:textAppearance="?attr/textAppearanceLabelMedium"
+        android:visibility="gone" />
+
+    <TextView
         android:id="@+id/tv_channel_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

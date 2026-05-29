@@ -72,7 +72,8 @@ class MessagesFragment : Fragment() {
             val wasAtBottom = isAtBottom()
             val previousCount = messagesAdapter.currentList.size
             messagesAdapter.submitList(messages) {
-                if (wasAtBottom || previousCount == 0) {
+                if (_binding == null) return@submitList
+                if (messages.isNotEmpty() && (wasAtBottom || previousCount == 0)) {
                     binding.rvMessages.scrollToPosition(messages.size - 1)
                 }
             }
@@ -85,6 +86,11 @@ class MessagesFragment : Fragment() {
 
         viewModel.selectedChannel.observe(viewLifecycleOwner) { channel ->
             binding.tvChannelTitle.text = channel ?: ""
+        }
+
+        viewModel.isOnline.observe(viewLifecycleOwner) { online ->
+            binding.tvOfflineBanner.visibility = if (online) View.GONE else View.VISIBLE
+            binding.btnSend.isEnabled = online
         }
     }
 

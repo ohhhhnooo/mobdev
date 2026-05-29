@@ -22,8 +22,8 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     val isLoading: LiveData<Boolean> = _isLoading
 
     val loginError = SingleLiveEvent<String>()
-    val loginSuccessEvent = SingleLiveEvent<Unit>()
-    val skipLoginEvent = SingleLiveEvent<Unit>()
+    val loginSuccessEvent = SingleLiveEvent<Unit?>()
+    val skipLoginEvent = SingleLiveEvent<Unit?>()
 
     fun checkSavedCredentials() {
         if (credentialsStore.hasCredentials()) {
